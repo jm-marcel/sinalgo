@@ -1,0 +1,5 @@
+Executar Projeto -> Selecionar Exemplo/Atividade -> Selecionar Simulação -> Opções (Número de Nodes, Modelo de Distribuição, Propriedades)
+
+Nodes -> Iniciar roteamento a partir do nó selecionado (Start) -> Troca de mensagens entre os nós -> Execução Contínua OU por Rounds
+
+Por Nó -> (Total de mensagens trocadas | Quantidade de mensagens trocadas durante o round)
