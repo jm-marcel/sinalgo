@@ -21,6 +21,10 @@ import sinalgo.nodes.messages.Inbox;
 import sinalgo.nodes.messages.Message;
 import sinalgo.tools.Tools;
 
+/*
+	@authors: pozza/jm-marcel
+*/
+
 // Simple Node Class - Redirects messages to other nodes
 public class SimpleNode extends Node {
 
@@ -55,7 +59,7 @@ public class SimpleNode extends Node {
                     this, // Router Node
                     1 // Message Type (Data)
             );
-            // Sets the timer wich will be used to determine the Rounds
+            // Sets the timer which will be used to determine the Rounds
             WsnMessageTimer timer = new WsnMessageTimer(msg);
             // Starts the timer with the Round and the broadcast node
             timer.startRelative(new Random().nextInt(200) + 200, this);
@@ -142,14 +146,14 @@ public class SimpleNode extends Node {
         }
     }
 
-    // Changes the neighbor nodes, wich will be used to send the message back to the sink node
+    // Changes the neighbor nodes, which will be used to send the message back to the sink node
     @Override
     public void neighborhoodChange() {
         // throw new UnsupportedOperationException("Not supported yet.");
         // To change body of generated methods, choose Tools | Templates.
     }
 
-    // Requiremens to be implemented
+    // Requirements to be implemented
     @Override
     public void checkRequirements() throws WrongConfigurationException {
         // throw new UnsupportedOperationException("Not supported yet.");
