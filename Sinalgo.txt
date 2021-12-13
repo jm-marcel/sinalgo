@@ -3,3 +3,41 @@ Executar Projeto -> Selecionar Exemplo/Atividade -> Selecionar Simulação -> Op
 Nodes -> Iniciar roteamento a partir do nó selecionado (Start) -> Troca de mensagens entre os nós -> Execução Contínua OU por Rounds
 
 Por Nó -> (Total de mensagens trocadas | Quantidade de mensagens trocadas durante o round)
+
+PD -> Todo o Nó tem o mesmo código, de forma que, em colaboração, irá trabalhar para resolver um problema (Envio de Mensagens para os nós vizinhos, tráfego etc.)
+
+Quando ativado, irá agendar o envio de uma mensagem para um nó vizinho.
+
+WSN1 -> handleMessages() - Mensagem chega a todos os nós de uma rede.
+
+broadcast() -> Nós vizinhos que não se conhecem comunicando entre si (desde que a mensagem tenha sido enviada pelo mesmo nó).
+
+Nó que enviou a mensagem para os vizinhos também recebe a própria mensagem.
+
+Para evitar loop (flood de mensagens) e problema de redundância, o nó de origem ignora as mensagens (Simple Node - handleMessages())
+
+Exemplo -> Nó de Origem envia uma mensagem para todos os nós vizinhos na rede e, logo após isso, por broadcast, cada nó retorna a mensagem para o nó de origem.
+
+WSN2 (Código indisponível) -> Para que todos os nós não enviem mensagens para o Sink de uma vez, foi criado um método para "randomizar" o round em que o nó retornará a mensagem.
+
+Quando não há ligações com os nós vizinhos, um nó não poderá retornar a mensagem ao Sink.
+
+"Construir Árvore de Roteamento" -> WsnMsg - Cria mensagem (Sink envia mensagem de ROTEAMENTO (0)..., ORIGEM (Sink), Destino NULL (broadcast), QUEM ROTEIA (Sink), ...já outros nós, mensagem de DADOS (1))
+
+WsnMessageTimer - Define Round (ROUND (1), BROADCAST (this))
+
+Tools.appendToOutput (Mensagem no TextArea)
+
+Sop (Output)
+
+SimpleNode -> Assim que receber a mensagem, calcula valor aleatório para ROUND e retorna a mensagem nesse ROUND.
+
+send(1) - Envia para o Nó ESTAÇÃO BASE (Sink) e broadcast(0) - Envia para o Nó VIZINHO (Roteamento)
+
+sendDirect() - Consegue enviar uma mensagem para um outro Nó mesmo não tendo enlace (Não Utilizar)
+
+proximoNoAteEstacaoBase -> Armazena o nó do qual ele recebeu a mensagem.
+
+TODAS AS MENSAGENS TRABALHAM COM NÚMERO SEQUENCIAL, OU SEJA, EM ORDEM.
+
+TF -> Calcular Número de Saltos.

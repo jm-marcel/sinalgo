@@ -3,46 +3,65 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package projects.wsn1.nodes.messages;
 
 import sinalgo.nodes.Node;
 import sinalgo.nodes.messages.Message;
 
-/**
- *
- * @author pozza
- */
+/*
+    @authors: pozza/jm-marcel
+*/
+
+// Message Class - Builds the Message Structure
 public class WsnMsg extends Message {
-    //Identificador da mensagem
+
+    // Message Identifier
     public Integer sequenceID;
-//Tempo de vida do Pacote
-    public Integer ttl;
-//No de destino
-    public Node destino;
-//No de origem
-    public Node origem;
-//No que vai reencaminhar a mensagem
+
+    // Package's Life Time
+    public Integer plt;
+
+    // Destination Node
+    public Node destination;
+
+    // Origin Node
+    public Node origin;
+
+    // Forwarding Node
     public Node forwardingHop;
-//Numero de saltos ate o destino
-    public Integer saltosAteDestino;
-//Tipo do Pacote. 0 para Estabelecimento de Rotas e 1 para pacotes de dados
-    public Integer tipoMsg = 0;
-//Construtor da Classe
-   
-    public WsnMsg(Integer seqID, Node origem, Node destino, Node forwardingHop, Integer tipo) {
+
+    // Number of Hops to Destination
+    public Integer hops;
+
+    // Package Type. 0 for Route Establishment and 1 for Data Packets
+    public Integer messageType = 0;
+
+    // Class Constructor
+    public WsnMsg(Integer seqID, Node origin, Node destination, Node forwardingHop, Integer type) {
         this.sequenceID = seqID;
-        this.origem = origem;
-        this.destino = destino;
+        this.origin = origin;
+        this.destination = destination;
         this.forwardingHop = forwardingHop;
-        this.tipoMsg = tipo;
+        this.messageType = type;
     }
 
+    // Message Structure Clone
     @Override
     public Message clone() {
-        WsnMsg msg = new WsnMsg(this.sequenceID, this.origem,
-        this.destino, this.forwardingHop, this.tipoMsg);
-        msg.ttl = this.ttl;
-        msg.saltosAteDestino = saltosAteDestino;
+        WsnMsg msg = new WsnMsg(
+                this.sequenceID, // Sequence ID
+                this.origin, // Origin Node
+                this.destination, // Destination Node
+                this.forwardingHop, // Forwarding Node
+                this.messageType // Message Type
+        );
+        // Sets the Package's Life Time
+        msg.plt = this.plt;
+        // Sets the Number of Hops to Destination
+        msg.hops = hops;
+        // Returns the Message Structure
         return msg;
     }
+
 }
